@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using GestaoDeEquipamentos.WebApp.Modulos.Equipamentos.Dominio;
+using GestaoDeEquipamentos.WebApp.Modulos.Chamados.Dominio;
 
 namespace GestaoDeEquipamentos.WebApp.Compartilhado.Infraestrutura.Arquivos;
 
@@ -11,6 +12,8 @@ public sealed class ContextoJson
     public List<Fabricante> Fabricantes { get; set; } = new List<Fabricante>();
 
     public List<Equipamento> Equipamentos { get; set; } = new List<Equipamento>();
+
+    public List<Chamado> Chamados { get; set; } = new List<Chamado>();
 
     public ContextoJson()
     {
@@ -67,6 +70,7 @@ public sealed class ContextoJson
     {
         Fabricantes = contexto.Fabricantes;
         Equipamentos = contexto.Equipamentos;
+        Chamados = contexto.Chamados;
     }
 
     public ContextoJson CarregarDadosPredefinidos()
@@ -87,7 +91,12 @@ public sealed class ContextoJson
             new("Notebook Dell.", 3000m, DateTime.Parse("10/02/2023"), contextoPredefinido.Fabricantes[0]) { Id = 1 },
             new("Monitor Acer", 600m, DateTime.Parse("25/08/2025"), contextoPredefinido.Fabricantes[3]) { Id = 1 },
 
+        });
 
+        contextoPredefinido.Chamados.AddRange(new List<Chamado>
+        {
+            new("Problema com o mouse", "O mouse não está funcionando corretamente.", DateTime.Parse("15/03/2023"), contextoPredefinido.Equipamentos[0]) { Id = 1 },
+            new("Tela quebrada", "A tela do notebook está quebrada.", DateTime.Parse("20/04/2023"), contextoPredefinido.Equipamentos[1]) { Id = 2 }
         });
 
 
