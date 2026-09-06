@@ -10,12 +10,12 @@ public record ListarChamadoViewModel(
     int Id,
     string Titulo,
     string Descricao,
-    string nomeEquipamento,
+    int EquipamentoId,
     DateTime DataAbertura
 
 );
 
-public record SelecionarChamadoViewModel(int Id, string titulo, string descricao, string nomeEquipamento, DateTime dataAbertura);
+public record SelecionarChamadoViewModel(int Id, string titulo, string descricao, int equipamentoId, DateTime dataAbertura);
 public record SelecionarEquipamentosModel(int Id, string Nome);
 
 public record CadastrarChamadoViewModel(
@@ -31,7 +31,7 @@ public record CadastrarChamadoViewModel(
     string? Descricao,
 
     [Required(ErrorMessage = "O campo \"Equipamento\" é obrigatório.")]
-    string NomeEquipamento,
+    int EquipamentoId,
 
     [Required(ErrorMessage = "O campo \"Data de abertura\" é obrigatório.")]
     [DataType(DataType.Date)]
@@ -54,7 +54,7 @@ public record EditarChamadoViewModel(
     string? Descricao,
 
     [Required(ErrorMessage = "O campo \"Equipamento\" é obrigatório.")]
-    string NomeEquipamento,
+    int EquipamentoId,
 
     [Required(ErrorMessage = "O campo \"Data de abertura\" é obrigatório.")]
     [DataType(DataType.Date)]
@@ -66,5 +66,5 @@ public record EditarChamadoViewModel(
 
 public record ExcluirChamadoViewModel(
     int Id,
-    string Nome
+    string Titulo
 );

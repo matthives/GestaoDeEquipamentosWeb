@@ -1,8 +1,8 @@
-@model EditarEquipamentoViewModel
+@model EditarChamadoViewModel
 
 @{
     Layout = "_Layout";
-    ViewBag.Titulo = "Edição de Equipamento";
+    ViewBag.Titulo = "Edição de Chamado";
 }
 
 <div class="row justify-content-start">
@@ -10,33 +10,33 @@
         <input asp-for="Id" type="hidden">
 
         <div>
-            <label class="form-label" asp-for="Nome"></label>
-            <input class="form-control" asp-for="Nome" type="text">
-            <span class="text-danger" asp-validation-for="Nome"></span>
+            <label class="form-label" asp-for="Titulo"></label>
+            <input class="form-control" asp-for="Titulo" type="text">
+            <span class="text-danger" asp-validation-for="Titulo"></span>
         </div>
 
         <div class="mt-4">
-            <label class="form-label" asp-for="PrecoAquisicao">Preço de Aquisição</label>
-            <input class="form-control" asp-for="PrecoAquisicao" type="number" min="0.01" step="0.01">
-            <span class="text-danger" asp-validation-for="PrecoAquisicao"></span>
+            <label class="form-label" asp-for="Descricao">Descrição</label>
+            <input class="form-control" asp-for="Descricao" type="text">
+            <span class="text-danger" asp-validation-for="Descricao"></span>
         </div>
 
         <div class="mt-4">
-            <label class="form-label" asp-for="DataFabricacao">Data de Fabricação</label>
-            <input class="form-control" asp-for="DataFabricacao" type="date">
-            <span class="text-danger" asp-validation-for="DataFabricacao"></span>
+            <label class="form-label" asp-for="DataAbertura">Data de Abertura</label>
+            <input class="form-control" asp-for="DataAbertura" type="date">
+            <span class="text-danger" asp-validation-for="DataAbertura"></span>
         </div>
 
         <div class="mt-4">
-            <label class="form-label" asp-for="FabricanteId">Fabricante</label>
-            <select class="form-select" asp-for="FabricanteId">
-                <option value="0">Selecione um fabricante</option>
-                @foreach (SelecionarFabricanteViewModel fabricante in Model.FabricantesDisponiveis!)
+            <label class="form-label" asp-for="EquipamentoId">Equipamento</label>
+            <select class="form-select" asp-for="EquipamentoId">
+                <option value="0">Selecione um equipamento</option>
+                @foreach (SelecionarEquipamentosModel equipamento in Model.EquipamentosDisponiveis!)
                 {
-                    <option value="@fabricante.Id">@fabricante.Nome</option>
+                    <option value="@equipamento.Id">@equipamento.Nome</option>
                 }
             </select>
-            <span class="text-danger" asp-validation-for="FabricanteId"></span>
+            <span class="text-danger" asp-validation-for="EquipamentoId"></span>
         </div>
 
         <div class="d-flex gap-3 mt-4">

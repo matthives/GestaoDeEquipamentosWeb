@@ -1,4 +1,4 @@
-@model ExcluirEquipamentoViewModel
+@model ExcluirChamadoViewModel
 
 @{
     Layout = "_Layout";
@@ -10,7 +10,7 @@
         <input asp-for="Id" type="hidden">
 
         <div class="alert alert-danger mt-4" role="alert">
-            Você deseja realmente excluir o registro "@Model.Nome"? Esta ação é irreversível.
+            Você deseja realmente excluir o registro "@Model.Titulo"? Esta ação é irreversível.
         </div>
 
         <div class="d-flex gap-3 mt-4">

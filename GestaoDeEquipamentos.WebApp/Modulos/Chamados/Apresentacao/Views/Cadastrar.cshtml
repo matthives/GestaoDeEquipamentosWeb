@@ -1,4 +1,4 @@
-@using GestaoDeEquipamentos.WebApp.Modulos.Chamados.Apresentacao.ViewModels
+@using GestaoDeEquipamentos.WebApp.Modulos.Chamados.Apresentacao;
 @model CadastrarChamadoViewModel
 
 @{
@@ -23,15 +23,15 @@
         </div>
 
         <div class="mt-4">
-            <label class="form-label" asp-for="nomeEquipamento">Nome</label>
-            <select class="form-select" asp-for="Nome">
+            <label class="form-label" asp-for="EquipamentoId">Nome</label>
+            <select class="form-select" asp-for="EquipamentoId">
                 <option value="0">Selecione um equipamento</option>
-                @foreach (SelecionarEquipamentoViewModel equipamento in Model.EquipamentosDisponiveis!)
+                @foreach (SelecionarEquipamentosModel equipamento in Model.EquipamentosDisponiveis!)
                 {
-                    <option value="@equipamento.Id">@equipamento.Nome</option>
+                    <option value="@equipamento.Id">@equipamento.Id</option>
                 }
             </select>
-            <span class="text-danger" asp-validation-for="nomeEquipamento"></span>
+            <span class="text-danger" asp-validation-for="EquipamentoId"></span>
         </div>
 
         <div class="d-flex gap-3 mt-4">

@@ -30,7 +30,7 @@ public sealed class ChamadoController : Controller
                 c.Id,
                 c.Titulo,
                 c.Descricao,
-                c.Equipamento.Nome,
+                c.Equipamento.Id,
                 c.DataAbertura
 
             );
@@ -48,7 +48,7 @@ public sealed class ChamadoController : Controller
             null,
             null,
             0,
-            DateTime.Now
+            DateTime.Now,
             ObterEquipamentosDisponiveis()
         );
 

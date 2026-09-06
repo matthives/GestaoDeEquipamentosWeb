@@ -1,8 +1,8 @@
-@model List<ListarEquipamentoViewModel>
+@model List<ListarChamadoViewModel>
 
 @{
     Layout = "_Layout";
-    ViewBag.Titulo = "Listagem de Equipamentos";
+    ViewBag.Titulo = "Listagem de Chamados";
 }
 
 <p>
@@ -27,19 +27,19 @@ else
                 <div class="card h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h5>@chamado.Nome</h5>
+                            <h5>@chamado.Titulo</h5>
                             <span class="badge text-bg-secondary">@chamado.Id</span>
                         </div>
 
                         <dl class="row mb-2">
-                            <dt class="col-sm-5">Preço</dt>
-                            <dd class="col-sm-7">@chamado.PrecoAquisicao.ToString("C2")</dd>
+                            <dt class="col-sm-5">Descricao</dt>
+                            <dd class="col-sm-7">@chamado.Descricao</dd>
 
-                            <dt class="col-sm-5">Fabricante</dt>
-                            <dd class="col-sm-7">@chamado.NomeFabricante</dd>
+                            <dt class="col-sm-5">Nome Equipamento</dt>
+                            <dd class="col-sm-7">@chamado.EquipamentoId</dd>
 
-                            <dt class="col-sm-5">Fabricação</dt>
-                            <dd class="col-sm-7">@chamado.DataFabricacao.ToString("dd/MM/yyyy")</dd>
+                            <dt class="col-sm-5">Data Abertura</dt>
+                            <dd class="col-sm-7">@chamado.DataAbertura.ToString("dd/MM/yyyy")</dd>
                         </dl>
 
                         <div class="d-flex gap-2 justify-content-end mt-auto">
@@ -48,7 +48,7 @@ else
                                 <i class="bi bi-pencil"></i>
                             </a>
                             <a class="btn btn-sm btn-outline-danger" title="Excluir" asp-action="Excluir"
-                               asp-route-id="@equipamento.Id">
+                               asp-route-id="@chamado.Id">
                                 <i class="bi bi-trash3"></i>
                             </a>
                         </div>
