@@ -28,7 +28,7 @@
                 <option value="0">Selecione um equipamento</option>
                 @foreach (SelecionarEquipamentosModel equipamento in Model.EquipamentosDisponiveis!)
                 {
-                    <option value="@equipamento.Id">@equipamento.Id</option>
+                    <option value="@equipamento.Id">@equipamento.Nome</option>
                 }
             </select>
             <span class="text-danger" asp-validation-for="EquipamentoId"></span>

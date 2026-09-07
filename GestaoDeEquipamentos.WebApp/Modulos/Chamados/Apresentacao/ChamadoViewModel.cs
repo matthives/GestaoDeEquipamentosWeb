@@ -30,7 +30,7 @@ public record CadastrarChamadoViewModel(
         ErrorMessage = "O campo \"Descrição do Chamado\" deve conter entre 10 e 200 caracteres.")]
     string? Descricao,
 
-    [Required(ErrorMessage = "O campo \"Equipamento\" é obrigatório.")]
+    [Range(1, int.MaxValue, ErrorMessage = "O campo \"Selecionar Equipamento\" é obrigatório.")]
     int EquipamentoId,
 
     [Required(ErrorMessage = "O campo \"Data de abertura\" é obrigatório.")]
@@ -53,7 +53,7 @@ public record EditarChamadoViewModel(
         ErrorMessage = "O campo \"Descrição do Chamado\" deve conter entre 10 e 200 caracteres.")]
     string? Descricao,
 
-    [Required(ErrorMessage = "O campo \"Equipamento\" é obrigatório.")]
+    [Range(1, int.MaxValue, ErrorMessage = "O campo \"Selecionar Equipamento\" é obrigatório.")]
     int EquipamentoId,
 
     [Required(ErrorMessage = "O campo \"Data de abertura\" é obrigatório.")]

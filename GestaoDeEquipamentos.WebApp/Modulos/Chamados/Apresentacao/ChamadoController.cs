@@ -113,11 +113,11 @@ public sealed class ChamadoController : Controller
     [HttpPost]
     public ActionResult Editar(int id, EditarChamadoViewModel viewModel)
     {
-        Chamado? chamadoSelecionado =
-            repositorioChamado.SelecionarPorId(viewModel.Id);
+        Equipamento? equipamentoSelecionado =
+            repositorioEquipamento.SelecionarPorId(viewModel.EquipamentoId);
 
-        if (chamadoSelecionado == null)
-            ModelState.AddModelError(nameof(viewModel.Id), " Selecione um chamado válido.");
+        if (equipamentoSelecionado == null)
+            ModelState.AddModelError(nameof(viewModel.EquipamentoId), "Selecione um equipamento válido.");
 
         if (!ModelState.IsValid)
         {
@@ -132,7 +132,7 @@ public sealed class ChamadoController : Controller
         Chamado chamadoAtualizado = new(
            viewModel.Titulo ?? string.Empty,
            viewModel.Descricao ?? string.Empty,
-           chamadoSelecionado.Equipamento,
+           equipamentoSelecionado!,
            viewModel.DataAbertura
         );
 

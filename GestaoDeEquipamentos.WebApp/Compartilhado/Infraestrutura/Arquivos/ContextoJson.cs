@@ -95,8 +95,8 @@ public sealed class ContextoJson
 
         contextoPredefinido.Chamados.AddRange(new List<Chamado>
         {
-            new("Problema com o mouse", "O mouse não está funcionando corretamente.", DateTime.Parse("15/03/2023"), contextoPredefinido.Equipamentos[0]) { Id = 1 },
-            new("Tela quebrada", "A tela do notebook está quebrada.", DateTime.Parse("20/04/2023"), contextoPredefinido.Equipamentos[1]) { Id = 2 }
+            new("Problema com o mouse", "O mouse não está funcionando corretamente.", contextoPredefinido.Equipamentos[0], DateTime.Parse("15/03/2023")) { Id = 1 },
+            new("Tela quebrada", "A tela do notebook está quebrada.", contextoPredefinido.Equipamentos[1], DateTime.Parse("20/04/2023")) { Id = 2 }
         });
 
 
