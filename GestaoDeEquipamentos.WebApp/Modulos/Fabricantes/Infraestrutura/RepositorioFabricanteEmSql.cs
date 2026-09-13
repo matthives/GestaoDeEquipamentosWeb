@@ -4,14 +4,10 @@ using GestaoDeEquipamentos.WebApp.Modulos.Fabricantes.Dominio;
 
 namespace GestaoDeEquipamentos.WebApp.Modulos.Fabricantes.Infraestrutura;
 
-public sealed class RepositorioFabricanteEmSql : IRepositorioFabricante
+public sealed class RepositorioFabricanteEmSql(string connectionString) : IRepositorioFabricante
 {
-    private readonly string connectionString;
+    private readonly string connectionString = connectionString;
 
-    public RepositorioFaricanteEmSql(string connectionString)
-    {
-        this.connectionString = connectionString;
-    }
     public void Cadastrar(Fabricante novoRegistro)
     {
         const string query =
@@ -29,17 +25,56 @@ public sealed class RepositorioFabricanteEmSql : IRepositorioFabricante
 
     public bool Editar(int idSelecionado, Fabricante entidadeAtualizada)
     {
-        throw new NotImplementedException();
+        const string query =
+            """
+            UPDATE dbo.TBFabricantes
+            SET Nome = @Nome, 
+                Email = @Email,
+                Telefone = @Telefone
+            WHERE Id = @Id
+            """;
+
+        using SqlConnection conexao = new(connectionString);
+
+        int quantidadeRegistrosAlterados = conexao.Execute(query, new
+        {
+            Id = idSelecionado,
+            entidadeAtualizada.Nome,
+            entidadeAtualizada.Email,
+            entidadeAtualizada.Telefone
+        });
+
+        return quantidadeRegistrosAlterados == 1;
     }
 
     public bool Excluir(int idSelecionado)
     {
-        throw new NotImplementedException();
+        const string query =
+            """
+            DELETE FROM dbo.TBFabricantes
+            WHERE Id = @Id
+            """;
+
+        using SqlConnection conexao = new(connectionString);
+
+        int quantidadeRegistrosExcluidos = conexao.Execute(query, new { Id = idSelecionado });
+
+        return quantidadeRegistrosExcluidos == 1;
     }
 
     public Fabricante? SelecionarPorId(int idSelecionado)
     {
-        throw new NotImplementedException();
+        const string query =
+            """
+            SELECT Id, Nome, Email, Telefone
+            FROM dbo.TBFabricantes
+            WHERE Id = @Id
+            """;
+
+        using SqlConnection conexao = new(connectionString);
+
+        // Criação de um objeto anônimo
+        return conexao.QuerySingleOrDefault<Fabricante>(query, new { Id = idSelecionado });
     }
 
     public List<Fabricante> SelecionarTodos()
