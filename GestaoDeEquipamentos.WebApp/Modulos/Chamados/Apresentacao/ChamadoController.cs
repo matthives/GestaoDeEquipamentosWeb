@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 public sealed class ChamadoController : Controller
 {
-    private readonly RepositorioChamadoEmArquivo repositorioChamado;
-    private readonly RepositorioEquipamentoEmArquivo repositorioEquipamento;
+    private readonly IRepositorioChamado repositorioChamado;
+    private readonly IRepositorioEquipamento repositorioEquipamento;
 
     public ChamadoController(
-    RepositorioChamadoEmArquivo repositorioChamado,
-    RepositorioEquipamentoEmArquivo repositorioEquipamento)
+    IRepositorioChamado repositorioChamado,
+    IRepositorioEquipamento repositorioEquipamento)
     {
         this.repositorioChamado = repositorioChamado;
         this.repositorioEquipamento = repositorioEquipamento;
